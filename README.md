@@ -33,11 +33,15 @@ handles SPA rewrites for Vercel.
 
 ### GitHub Pages
 
-```sh
-npm run build
-npx gh-pages -d dist
-```
-(Enable Pages from the `gh-pages` branch in repo settings.)
+A GitHub Actions workflow (`.github/workflows/deploy.yml`) builds the app and
+deploys it automatically to GitHub Pages on every push to `main`.
+
+1. Push the repo to GitHub (this also triggers the first deploy on `main`)
+2. In repo Settings → Pages, set **Source** to **GitHub Actions**
+3. Your site is live at `https://<user>.github.io/<repo>/` (the Vite `base`
+   path is set automatically from the repo name)
+
+Deploy manually anytime from the Actions tab (workflow_dispatch).
 
 ### Any container platform (Render, Railway, Fly.io, GCP Cloud Run, AWS)
 
