@@ -9,7 +9,7 @@ const base = process.env.GITHUB_REPOSITORY
 
 export default defineConfig(() => {
   return {
-    base: base, // <--- Ensure key: value pair is explicitly declared
+    base: '/', // <--- Ensure key: value pair is explicitly declared
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
