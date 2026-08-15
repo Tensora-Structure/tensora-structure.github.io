@@ -9,7 +9,6 @@ const base = process.env.GITHUB_REPOSITORY
 
 export default defineConfig(() => {
   return {
-    base: '/', // <--- Ensure key: value pair is explicitly declared
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -21,7 +20,7 @@ export default defineConfig(() => {
         output: {
           manualChunks: {
             react: ['react', 'react-dom'],
-            excel: ['xlsx', 'exceljs'],
+            excel: ['exceljs'],
             dxf: ['dxf-writer'],
           },
         },

@@ -1,6 +1,0 @@
-{
-  "name": "Tensora Structure",
-  "description": "An interactive ETABS-like web application for 2D finite element structural analysis, frame design, load assignments, and diagram visualizations.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}

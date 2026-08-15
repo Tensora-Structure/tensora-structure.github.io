@@ -1,6 +1,6 @@
 # Tensora Structure
 
-Structural analysis & detailing web app (React + Vite + TypeScript).
+A web-application for Structural Analysis, Design, Detailing & Estimation as per IS-codes (React + Vite + TypeScript).
 
 ## Run Locally
 
@@ -54,9 +54,3 @@ Point your platform at the repo root — no extra config needed.
 npm run build
 cp -r dist /var/www/html/tensora
 ```
-
-## Scripts / Tooling
-
-The root contains one-off Node patcher scripts (`fix_*.cjs`, `patch_*.cjs`,
-`generate_detailing*.cjs`) used to programmatically modify the codebase. They are
-not part of the app runtime and can be ignored (or removed) when deploying.
