@@ -3,9 +3,8 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import { defineConfig } from 'vite';
 
-const base = process.env.GITHUB_REPOSITORY
-  ? `/${process.env.GITHUB_REPOSITORY.split('/')[1]}/`
-  : '/';
+const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? '';
+const base = repo.endsWith('.github.io') || !repo ? '/' : `/${repo}/`;
 
 export default defineConfig(() => {
   return {
