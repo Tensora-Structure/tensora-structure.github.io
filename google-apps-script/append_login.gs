@@ -15,6 +15,16 @@
 const SHEET_NAME = 'Logins';
 const HEADERS = ['Timestamp', 'Name', 'Email', 'Source'];
 
+function doGet() {
+  return HtmlService.createHtmlOutput(
+    '<!doctype html><html><body style="font-family:sans-serif;text-align:center;padding-top:4rem">' +
+      '<h2>Tensora Structure — login logger</h2>' +
+      '<p>This endpoint receives login notifications and appends them to a Google Sheet.</p>' +
+      '<p>Status: <strong>OK</strong></p>' +
+      '</body></html>',
+  );
+}
+
 function doPost(e) {
   try {
     let data = {};
