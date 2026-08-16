@@ -2,6 +2,25 @@
 
 A web-application for Structural Analysis, Design, Detailing & Estimation as per IS-codes (React + Vite + TypeScript).
 
+## Google Login & User Logging
+
+Users sign in with Google; successful logins (name + email) are appended to a
+Google Sheet via an Apps Script webhook. Set up these three pieces once:
+
+1. **OAuth Client ID** — [Google Cloud Console](https://console.cloud.google.com/apis/credentials):
+   create the OAuth consent screen (External, your email as test user), then
+   "Create credentials → OAuth client ID → Web application" and add
+   `https://tensora-structure.github.io` to **Authorized JavaScript origins**. Copy the client ID.
+2. **Sheet webhook** — create a Google Sheet, then Extensions → Apps Script,
+   paste `google-apps-script/append_login.gs`, Deploy → New deployment → Web app:
+   Execute as *Me*, access *Anyone*. Copy the `/exec` URL.
+3. **Credentials** —
+   - Locally: copy `.env.example` to `.env.local` and fill both values.
+   - Deployed: add `VITE_GOOGLE_CLIENT_ID` and `VITE_SHEETS_WEBHOOK_URL` to the
+     GitHub repo under Settings → Secrets and variables → Actions.
+
+Until the client ID is configured, the app shows a setup message instead of the sign-in button.
+
 ## Run Locally
 
 **Prerequisites:** Node.js 18+
@@ -20,8 +39,9 @@ A web-application for Structural Analysis, Design, Detailing & Estimation as per
 
 ## Deploy
 
-This is a static client-side app — no server or API keys required. `dist/` can be
-served by any static host. Use the URL of the deployed site wherever the app URL is needed.
+This is a static client-side app — no server required. `dist/` can be
+served by any static host. The Google login config is injected at build time
+from the environment variables described above.
 
 ### Vercel / Netlify (zero config)
 

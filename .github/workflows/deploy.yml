@@ -29,6 +29,9 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
+        env:
+          VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+          VITE_SHEETS_WEBHOOK_URL: ${{ secrets.VITE_SHEETS_WEBHOOK_URL }}
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

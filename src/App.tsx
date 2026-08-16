@@ -18,6 +18,7 @@ import { solveStructure } from './solver';
 import { calculateFoundationDesign } from './lib/foundationEngine';
 import ExcelJS from 'exceljs';
 import { shapeToPngBase64 } from './utils/shapeToPng';
+import { AuthUser } from './lib/googleAuth';
 
 // Components
 import Toolbar from './components/Toolbar';
@@ -310,7 +311,7 @@ const INITIAL_FRAMES: Frame[] = [
   },
 ];
 
-export default function App() {
+export default function App({ user, onSignOut }: { user?: AuthUser; onSignOut?: () => void }) {
   // Model state variables
   const [joints, setJoints] = useState<Joint[]>([]);
   const [frames, setFrames] = useState<Frame[]>([]);
@@ -1967,8 +1968,24 @@ export default function App() {
   return (
     <div id="app-root-container" className="flex flex-col h-screen w-screen bg-[#F3F3F3] text-slate-800 overflow-hidden font-sans select-none text-[11px]">
       {/* 1. WINDOWS CAD APPLICATION TITLE BAR & DECORATIVE MENU */}
-      <div id="desktop-title-bar" className="bg-[#004A99] text-white px-3 py-1.5 flex items-center justify-center select-none flex-shrink-0 text-sm font-bold tracking-wider">
+      <div id="desktop-title-bar" className="bg-[#004A99] text-white px-3 py-1.5 flex items-center justify-center select-none flex-shrink-0 text-sm font-bold tracking-wider relative">
         <span>Tensora Structure</span>
+        {user && (
+          <div className="absolute right-3 flex items-center gap-2 text-[11px] font-normal tracking-normal">
+            {user.picture && (
+              <img src={user.picture} alt="" className="w-5 h-5 rounded-full bg-white/20" referrerPolicy="no-referrer" />
+            )}
+            <span className="max-w-[180px] truncate">{user.email}</span>
+            {onSignOut && (
+              <button
+                onClick={onSignOut}
+                className="bg-white/15 hover:bg-white/25 rounded px-2 py-0.5 cursor-pointer transition"
+              >
+                Sign out
+              </button>
+            )}
+          </div>
+        )}
       </div>
 
       <header id="main-header" className="bg-white border-b border-[#D1D1D1] flex flex-col select-none flex-shrink-0 z-20">
