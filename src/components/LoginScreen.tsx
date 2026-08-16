@@ -36,7 +36,7 @@ export default function LoginScreen({ renderButton }: LoginScreenProps) {
           </svg>
         </div>
         <h1 className="text-2xl font-bold text-[#004A99] tracking-wide mb-1">Tensora Structure</h1>
-        <p className="text-sm text-slate-500 mb-6">Structural analysis &amp; detailing suite</p>
+        <p className="text-sm text-slate-500 mb-6">Structural Engineering Suite</p>
         <p className="text-xs text-slate-400 mb-4">Sign in with your Google account to continue</p>
         <div ref={buttonRef} id="google-signin-button" className="flex justify-center mb-4 min-h-[40px]" />
         {status === 'loading' && <p className="text-xs text-slate-400 mb-4 -mt-2">Loading sign-in…</p>}
